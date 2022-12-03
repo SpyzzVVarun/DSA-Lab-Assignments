@@ -1,4 +1,4 @@
-                                ** Time Table Generator Project Input File details **
+#                                Time Table Generator Project Input File details
 
 There are 2 input files: 
 1. num_inputs.txt
