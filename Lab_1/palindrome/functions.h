@@ -1,0 +1,1 @@
+void check_palindrome(char *p);
