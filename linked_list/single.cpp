@@ -16,15 +16,15 @@ struct node
 
 // Function Declarations
 struct node *create_node();
-bool check_empty(struct node *p);
+bool checkEmpty(struct node *p);
 void empty();
-void add_begin(int val,struct node **p);
-void add_end(int val,struct node **p);
-void add_node(int val,int pos,struct node **p);
-void del_begin(struct node **p);
-void del_end(struct node **p);
-void del_node(int pos, struct node **p);
-void print_node(struct node *p);
+void addBegin(int val,struct node **p);
+void addEnd(int val,struct node **p);
+void addNode(int val,int pos,struct node **p);
+void delBegin(struct node **p);
+void delEnd(struct node **p);
+void delNode(int pos, struct node **p);
+void printNode(struct node *p);
 void compare();
 struct node * add(struct node * first, struct node * second);
 struct node * reverse(struct node * p);
@@ -36,10 +36,10 @@ int main()
     struct node *start = NULL;
     struct node *list1 = NULL;
     struct node *list2 = NULL;
-    add_begin(5,&list1);
-    add_begin(4,&list1);
-    add_begin(4,&list2);
-    add_begin(8,&list2);
+    addBegin(5,&list1);
+    addBegin(4,&list1);
+    addBegin(4,&list2);
+    addBegin(8,&list2);
 
     // Menu Driven Program
     while (1)
@@ -65,45 +65,45 @@ int main()
         case 1:
             cin >> data;
             cout<<"Inserting Node at Beginning: "<<endl;
-            add_begin(data,&start);
+            addBegin(data,&start);
             cout<<endl;
             break;
         case 2:
             cin >> data;
             cout<<"Inserting Node at Last: "<<endl;
-            add_end(data,&start);
+            addEnd(data,&start);
             cout<<endl;
             break;
         case 3:
             cin >> pos;
             cin >> data;
             cout<<"Inserting Node at a given position:"<<endl;
-            add_node(data,pos,&start);
+            addNode(data,pos,&start);
             cout<<endl;
             break;
         case 4:
             cout<<"Deleting Node at beginning: "<<endl;
-            del_begin(&start);
+            delBegin(&start);
             break;
         case 5:
             cout<<"Deleting Node at end: "<<endl;
-            del_end(&start);
+            delEnd(&start);
             break;
         case 6:
             cin >> pos;
             cout<<"Deleting a particular node: "<<endl;
-            del_node(pos,&start);
+            delNode(pos,&start);
             break;
         case 7:
             cout<<"Display elements of link list"<<endl;
-            print_node(start);
+            printNode(start);
             cout<<endl;
             break;
         case 8:
             compare();
             break;
         case 9:
-            print_node(solve(list1,list2));
+            printNode(solve(list1,list2));
             break;
         case 10:
             cout<<"Exiting..."<<endl;
@@ -124,7 +124,7 @@ struct node *create_node()
 }
 
 // Function to check if the linked list is empty
-bool check_empty(struct node *p)
+bool checkEmpty(struct node *p)
 {
     return (p==NULL);
 }
@@ -135,9 +135,9 @@ void empty()
 }
 
 // Function to add node to the beginning of linked list
-void add_begin(int val,struct node **p)
+void addBegin(int val,struct node **p)
 {
-    if (check_empty(*p))
+    if (checkEmpty(*p))
     {
         *p = create_node();
         (*p)->data = val;
@@ -151,14 +151,14 @@ void add_begin(int val,struct node **p)
 }
 
 // Adding Node to the end of the list
-void add_end(int val,struct node **p)
+void addEnd(int val,struct node **p)
 {
     struct node *temp = *p;
     
     // For Empty Linked List
-    if (check_empty(*p))
+    if (checkEmpty(*p))
     {
-        add_begin(val,p);
+        addBegin(val,p);
     }
     // For linked list of size 1
     else if (temp->ptr == NULL)
@@ -182,20 +182,20 @@ void add_end(int val,struct node **p)
 }
 
 // Function to add node at a particular index/position
-void add_node(int val,int pos,struct node **p)
+void addNode(int val,int pos,struct node **p)
 {
     try
     {
-        if (check_empty(*p))
+        if (checkEmpty(*p))
         {
-            add_begin(val,p);
+            addBegin(val,p);
         }
         else
         {
             struct node *temp = *p;
             if (pos==1)
             {
-                add_begin(val,p);
+                addBegin(val,p);
             }
             else if (pos==2)
             {
@@ -226,9 +226,9 @@ void add_node(int val,int pos,struct node **p)
 }
 
 // Function to delete the first node
-void del_begin(struct node **p)
+void delBegin(struct node **p)
 {
-    if (check_empty(*p))
+    if (checkEmpty(*p))
     {
         empty();
     }
@@ -239,18 +239,18 @@ void del_begin(struct node **p)
 }
 
 // Function to delete the last node
-void del_end(struct node **p)
+void delEnd(struct node **p)
 {
     struct node *temp = *p;
     // Checking empty linked list
-    if (check_empty(*p))
+    if (checkEmpty(*p))
     {
         empty();
     }
     // For linked list of size 1
     else if (temp->ptr == NULL)
     {
-        del_begin(p);
+        delBegin(p);
     }
     else
     {
@@ -263,11 +263,11 @@ void del_end(struct node **p)
 }
 
 // Function to delete node at a particular index/position
-void del_node(int pos, struct node **p)
+void delNode(int pos, struct node **p)
 {
     try
     {
-        if (check_empty(*p))
+        if (checkEmpty(*p))
         {
             empty();
         }
@@ -276,7 +276,7 @@ void del_node(int pos, struct node **p)
             struct node *temp = *p;
             if (pos==1)
             {
-                del_begin(p);
+                delBegin(p);
             }
             else if (pos==2)
             {
@@ -298,10 +298,10 @@ void del_node(int pos, struct node **p)
     }
 }
 
-void print_node(struct node *p)
+void printNode(struct node *p)
 {
     struct node *temp = p;
-    if (check_empty(p))
+    if (checkEmpty(p))
     {
         empty();
     }
@@ -324,10 +324,10 @@ void print_node(struct node *p)
 void compare()
 {
     struct node *st = NULL;
-    add_begin(10,&st);
+    addBegin(10,&st);
 
     auto start = steady_clock::now();
-    add_end(20,&st);
+    addEnd(20,&st);
     auto end = steady_clock::now();
     double elapsed_time = double (duration_cast <nanoseconds> (end - start).count());
     cout << "time for a push_back in our linked list: " << elapsed_time << " nanoseconds " << endl;
@@ -342,7 +342,7 @@ void compare()
     cout << "time for a push_back in STL linked list: " << elapsed_time1 << " nanoseconds " << endl << endl;
 
     auto start3 = steady_clock::now();
-    del_end(&st);
+    delEnd(&st);
     auto end3 = steady_clock::now();
     double elapsed_time3 = double (duration_cast <nanoseconds> (end3 - start3).count());
     cout << "time for a pop_front in our linked list: " << elapsed_time3 << " nanoseconds " << endl;

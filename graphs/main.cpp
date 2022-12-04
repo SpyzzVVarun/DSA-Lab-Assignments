@@ -2,11 +2,16 @@
 
 int main() 
 {
-    int num = 4;
+    int num = 6;
     Graph g(num);
-    g.add_edges(0, 1);
-    g.add_edges(0, 2);
-    g.add_edges(1, 3);
+    g.addEdge(0, 1);
+    g.addEdge(0, 2);
+    g.addEdge(1, 3);
+    g.addEdge(1, 4);
+    g.addEdge(4, 5);
+    g.deleteEdge(1, 4);
+    g.connectedComponents();
+    g.printAdjList();
     cout << "BFS: " << endl; 
     g.BFS(1);
     cout << endl << "DFS: " << endl;
