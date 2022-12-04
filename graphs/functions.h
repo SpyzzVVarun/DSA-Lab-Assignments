@@ -46,8 +46,12 @@ class Graph
         // Add edges to the graph
         void addEdge(ll v, ll u) 
         {
-            adj_lists[v].PB(u);
-            adj_lists[u].PB(v);
+            if(v == u) adj_lists[v].PB(u);
+            else
+            {
+                adj_lists[v].PB(u);
+                adj_lists[u].PB(v);
+            }
         }
 
         // Delete graph edges
