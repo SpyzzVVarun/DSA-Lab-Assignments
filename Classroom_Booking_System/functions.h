@@ -106,6 +106,19 @@ void bookRoom(int room, pair<int, int> date, int time, string course, string ins
     }  
 }
 
+void bookRecurrHelper(int mod, int effective_date, int room, int time, string course, string instructor)
+{
+    for(int i=effective_date+1; i<=90; ++i)
+    {
+        if (i%7==mod) 
+        {
+            if ((i>=1) && (i<=31)) bookRoom(room, {i, 1}, time, course, instructor);
+            else if ((i>=32) && (i<=59)) bookRoom(room, {i-31, 2}, time, course, instructor);
+            if ((i>=60) && (i<=90)) bookRoom(room, {i-59, 3}, time, course, instructor);
+        }
+    }
+}
+
 void printRoomDetails(int room_number)
 {
     cout << endl;
@@ -130,7 +143,24 @@ void updateRoomDetails(int room_number, int capacity, bool projector, bool ac)
     room[room_number].ac = ac;
 }
 
-void cancelBooking(int room_number, pair<int, int> date,int time)
+void cancelBooking(int room_number, pair<int, int> date,int time, string instructor)
 {
-    room_schedule[room_number][date][time] = {"Vacant","None"};
+    if ((room_schedule[room_number][date][time].second == instructor) || (room_schedule[room_number][date][time].second == "None"))
+    {
+        room_schedule[room_number][date][time] = {"Vacant","None"};
+    }
+    else cout << "User does not have the necessary privileges to cancel this booking.\n\n";
+}
+
+void cancelRecurrHelper(int mod, int effective_date, int room, int time, string instructor)
+{
+    for(int i=effective_date+1; i<=90; ++i)
+    {
+        if (i%7==mod) 
+        {
+            if ((i>=1) && (i<=31)) cancelBooking(room, {i, 1}, time, instructor);
+            else if ((i>=32) && (i<=59)) cancelBooking(room, {i-31, 2}, time, instructor);
+            if ((i>=60) && (i<=90)) cancelBooking(room, {i-59, 3}, time, instructor);
+        }
+    }
 }
