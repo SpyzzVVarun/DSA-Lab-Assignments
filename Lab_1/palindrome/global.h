@@ -1,4 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
+#include <iostream>
+#include <bits/stdc++.h>
+#include <fstream>
+#include <string>
+
+using namespace std;

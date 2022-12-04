@@ -1,19 +1,15 @@
-C = gcc 
+C = g++ 
 FLAGS = -O3 -pg -Wall -W
 RM  = rm -f
 EXEC = run
 
 OBJECTS = \
 	 main.o \
-	 check_palindrome.o \
 
 all: $(OBJECTS) compile touch 
 
-main.o : main.c
-					 $(C) $(FLAGS) -c main.c
-
-check_palindrome.o : check_palindrome.c
-					 $(C) $(FLAGS) -c check_palindrome.c
+main.o : main.cpp
+					 $(C) $(FLAGS) -c main.cpp
 
 clean:  
 					 $(RM) $(OBJECTS) $(EXEC) 
