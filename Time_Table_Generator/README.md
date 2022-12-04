@@ -17,8 +17,3 @@ courses.txt has (space separated):
 * Each Lecture has 3 days per week and each Lab has 3 hours per week
 * Each lecture can happen only once a day
 * There can be 2 labs in a day
-
-DISCLAIMER: 
-Code only tested in vscode. MakeFile not tested, if it doesnt work, code can be run using the usual:
-g++ main.cpp
-./a.exe
