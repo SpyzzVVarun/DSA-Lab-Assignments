@@ -119,10 +119,10 @@ ll partition(ll arr[], ll first, ll last)
         if (arr[j]<pivot)
         {
             i++;
-            swap(arr[i],arr[j]);
+            swap(arr[i], arr[j]);
         }
     }
-    swap(arr[i + 1],arr[last]);
+    swap(arr[i + 1], arr[last]);
     return (i + 1);
 }
   

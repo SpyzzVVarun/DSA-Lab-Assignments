@@ -71,7 +71,6 @@ int main()
                 cin >> date.first;
                 cin >> date.second;
                 if (date.second > 3) cout << "System currently Active for dates 01/01/2023 - 31/03/2023";
-                else if ((date.second == 3) && (date.first >1)) cout << "System currently Active for dates 31/01/2023 - 01/03/2023";
                 else printRoomSchedule(room, date);
                 break;
             case 2:
@@ -112,6 +111,11 @@ int main()
                         if (date.second == 1) effective_date = date.first;
                         else if (date.second == 2) effective_date = 31+ date.first;
                         else if (date.second == 3) effective_date = 31+ 28+ date.first;
+                        else
+                        {
+                            cout << "System currently Active for dates 01/01/2023 - 31/03/2023";
+                            conti = 0;
+                        }
                         while(conti)
                         {
                             cout << "Enter Day: (Mon/TUe/Wed/Thu/Fri/Sat/Sun): ";
@@ -125,10 +129,12 @@ int main()
                             else if (day == "Fri") bookRecurrHelper(6, effective_date, room, time, course, instructor);
                             else if (day == "Sat") bookRecurrHelper(0, effective_date, room, time, course, instructor);
                             else if (day == "Sun") bookRecurrHelper(1, effective_date, room, time, course, instructor);
+                            else cout << "Invalid Day";
                             cout << "Do you want to continue? (y/n)";
                             cin >> contis;
                             conti = (contis == 'y') ? 1 : 0;
-                        } 
+                        }
+                        break; 
                 }
                 break;
             case 3:
@@ -157,6 +163,11 @@ int main()
                         if (date.second == 1) effective_date = date.first;
                         else if (date.second == 2) effective_date = 31+ date.first;
                         else if (date.second == 3) effective_date = 31+ 28+ date.first;
+                        else
+                        {
+                            cout << "System currently Active for dates 01/01/2023 - 31/03/2023";
+                            conti = 0;
+                        }
                         while(conti)
                         {
                             cout << "Enter Day: (Mon/Tue/Wed/Thu/Fri/Sat/Sun): ";
@@ -170,12 +181,13 @@ int main()
                             else if (day == "Fri") cancelRecurrHelper(6, effective_date, room, time, instructor);
                             else if (day == "Sat") cancelRecurrHelper(0, effective_date, room, time, instructor);
                             else if (day == "Sun") cancelRecurrHelper(1, effective_date, room, time, instructor);
+                            else cout << "Invalid Day";
                             cout << "Do you want to continue? (y/n)";
                             cin >> contis;
                             conti = (contis == 'y') ? 1 : 0;
                         }
+                        break;
                 }
-                
                 break;
             case 4:
                 cout<<"Enter Room Number: ";

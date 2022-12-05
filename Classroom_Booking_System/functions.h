@@ -53,7 +53,6 @@ void printHelperSecond(int LEN, int room, pair<int, int> date, int i)
 
 void printRoomSchedule(int room, pair<int, int> date)
 {
-    int len, extra;
     initRoomSchedule(room, date);
      
     cout << endl;
